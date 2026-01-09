@@ -17,6 +17,16 @@ import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
+/**
+ * A horizontal dashed line divider used to separate receipt sections.
+ * Creates a customizable dashed pattern using Canvas and PathEffect.
+ *
+ * @param dashColor Color of the dashes
+ * @param gapColor Background color between dashes
+ * @param dashWidth Width of each dash
+ * @param dashGap Space between dashes
+ * @param strokeWidth Thickness of the line
+ */
 @Composable
 fun DashedLine(
     modifier: Modifier = Modifier,

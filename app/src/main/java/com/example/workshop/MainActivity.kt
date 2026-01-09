@@ -20,12 +20,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             WorkshopTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Receipt(
-                        modifier = Modifier
-                            .padding(innerPadding)
-                            .padding(horizontal = 25.dp),
-                        shapeColor = Color(0xFFD0D0D0)
-                    )
+                    ReceiptComponentScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
