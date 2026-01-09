@@ -15,7 +15,9 @@ import com.receiptui.modals.ZapSectionData
 import com.receiptui.shapes.TicketShape
 import com.receiptui.shapes.TopEdgeStyle
 
-
+/**
+ * A composable component that displays receipt section data in a ticket shape.
+ */
 @Composable
 fun ReceiptTicketComponent(
     modifier: Modifier = Modifier,

@@ -19,7 +19,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.receiptui.components.Receipt
 import com.receiptui.components.ReceiptFooterComponent
 import com.receiptui.components.ReceiptTicketComponent

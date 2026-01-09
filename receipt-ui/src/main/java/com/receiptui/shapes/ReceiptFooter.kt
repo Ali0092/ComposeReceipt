@@ -9,6 +9,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 
+/**
+ * A receipt footer shape with inward top corners and scalloped bottom edge.
+ */
 class ReceiptFooter(
     private val inwardCornerRadius: Dp = 8.dp,
     private val bottomCornerRadius: Dp = 25.dp,

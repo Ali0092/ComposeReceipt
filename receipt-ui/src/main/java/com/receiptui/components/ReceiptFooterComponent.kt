@@ -10,7 +10,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.receiptui.shapes.ReceiptFooter
 
-
+/**
+ * A composable component that displays content in a receipt footer shape.
+ */
 @Composable
 fun ReceiptFooterComponent(
     modifier: Modifier = Modifier,

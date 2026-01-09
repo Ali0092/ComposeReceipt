@@ -9,6 +9,9 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 
+/**
+ * A ticket-style shape with configurable top edge and inward bottom corners.
+ */
 class TicketShape(
     private val topEdgeStyle: TopEdgeStyle = TopEdgeStyle.Inward,
     private val roundedCornerRadius: Dp = 25.dp,
@@ -25,8 +28,6 @@ class TicketShape(
             val height = size.height
             val roundedRadiusPx = with(density) { roundedCornerRadius.toPx() }
             val inwardRadiusPx = with(density) { inwardCornerRadius.toPx() }
-
-            // Calculate number of scallops
 
             // Start drawing based on top edge style
             when (topEdgeStyle) {
