@@ -3,7 +3,6 @@ package com.receiptui.components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -15,7 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.receiptui.modals.ReceiptData
@@ -25,78 +24,14 @@ import com.receiptui.shapes.ReceiptFooter
 import com.receiptui.shapes.TicketShape
 import com.receiptui.shapes.TopEdgeStyle
 
-
-@Preview(showBackground = true)
-@Composable
-fun TempPreview() {
-    Receipt(
-        modifier = Modifier.padding(horizontal = 16.dp),
-        receiptData = ReceiptData(
-            sectionsData = listOf(
-                ZapSectionData(
-                    title = "Contact Details", items = listOf(
-                        ReceiptSectionData(label = "Name", value = "Tim"),
-                        ReceiptSectionData(label = "Bank Name", value = "Payzap Bank"),
-                        ReceiptSectionData(label = "IBAN", value = "PK36SCBL0000001123456702")
-                    )
-                ),
-                ZapSectionData(
-                    title = "Contact Details", items = listOf(
-                        ReceiptSectionData(label = "Name", value = "Tim"),
-                        ReceiptSectionData(label = "Bank Name", value = "Payzap Bank"),
-                        ReceiptSectionData(label = "IBAN", value = "PK36SCBL0000001123456702")
-                    )
-                ),
-                ZapSectionData(
-                    title = "Contact Details", items = listOf(
-                        ReceiptSectionData(label = "Name", value = "Tim"),
-                        ReceiptSectionData(label = "Bank Name", value = "Payzap Bank"),
-                        ReceiptSectionData(label = "IBAN", value = "PK36SCBL0000001123456702")
-                    )
-                )
-            ),
-            totalSectionData = ReceiptSectionData(label = "Total", value = "3500 Rs"),
-            descriptionSectionData = ReceiptSectionData(label = "Description", value = "Wholesale product Payment sent to Tim."),
-        ),
-        ticketSectionContent = {
-            TicketSectionItem(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(24.dp),
-                sectionData = it
-            )
-        },
-        totalSectionContent = {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(24.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(text = it.label.toString(), style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onBackground)
-                Text(text = it.value.toString(), color = MaterialTheme.colorScheme.onBackground)
-            }
-        },
-        footerSectionContent = {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(24.dp), verticalArrangement = Arrangement.Center
-            ) {
-                Text(text = it.label.toString(), style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onBackground)
-                Spacer(modifier = Modifier.height(16.dp))
-                Text(text = it.value.toString(), color = MaterialTheme.colorScheme.onBackground)
-            }
-        }
-    )
-}
-
 /**
  * Comprehensive ticket-style receipt container with multiple sections, dashed dividers, and scalloped footer.
  * Displays transaction information in a structured format with customizable content lambdas for each section.
  *
  * @param receiptData Main data model containing all receipt content
- * @param ticketBackgroundColor Background color for ticket sections
+ * @param backgroundColor Background color for ticket sections
  * @param dashesColor Color of dashed separator lines
+ * @param contentColor Color of content including label, values and title lines
  * @param ticketSectionContent Lambda to render ticket section content
  * @param totalSectionContent Lambda to render total section content
  * @param footerSectionContent Lambda to render footer section content
@@ -104,14 +39,13 @@ fun TempPreview() {
 @Composable
 fun Receipt(
     modifier: Modifier = Modifier,
-    ticketBackgroundColor: Color = Color(0xff123123),
-    dashesColor: Color = Color(0xff123123),
+    backgroundColor: Color,
+    contentColor: Color,
+    dashesColor: Color,
     receiptData: ReceiptData,
     canShowSectionSeparator: Boolean = true,
     roundedCornerRadius: Dp = 25.dp,
     inwardCornerRadius: Dp = 8.dp,
-    scallopDepth: Dp = 19.dp,
-    scallopWidth: Dp = 27.dp,
     scallopGap: Dp = 2.dp,
     ticketSectionContent: @Composable (ZapSectionData<ReceiptSectionData>) -> Unit,
     totalSectionContent: @Composable (ReceiptSectionData) -> Unit,
@@ -129,11 +63,9 @@ fun Receipt(
                     shape = TicketShape(
                         topEdgeStyle = if (index == 0) TopEdgeStyle.Rounded else TopEdgeStyle.Inward,
                         roundedCornerRadius = roundedCornerRadius,
-                        inwardCornerRadius = inwardCornerRadius,
-                        scallopDepth = scallopDepth,
-                        scallopWidth = scallopWidth
+                        inwardCornerRadius = inwardCornerRadius
                     ),
-                    color = ticketBackgroundColor
+                    color = backgroundColor
                 ) {
                     ticketSectionContent(receiptData.sectionsData[index])
                 }
@@ -144,7 +76,7 @@ fun Receipt(
             DashedLine(
                 modifier = Modifier.padding(horizontal = 8.dp),
                 dashColor = dashesColor,
-                gapColor = ticketBackgroundColor
+                gapColor = backgroundColor
             )
         }
 
@@ -155,11 +87,9 @@ fun Receipt(
                     .wrapContentHeight(),
                 shape = TicketShape(
                     roundedCornerRadius = roundedCornerRadius,
-                    inwardCornerRadius = inwardCornerRadius,
-                    scallopDepth = scallopDepth,
-                    scallopWidth = scallopWidth
+                    inwardCornerRadius = inwardCornerRadius
                 ),
-                color = ticketBackgroundColor
+                color = backgroundColor
             ) {
                 totalSectionContent(receiptData.totalSectionData)
             }
@@ -170,7 +100,7 @@ fun Receipt(
             DashedLine(
                 modifier = Modifier.padding(horizontal = 8.dp),
                 dashColor = dashesColor,
-                gapColor = ticketBackgroundColor
+                gapColor = backgroundColor
             )
         }
 
@@ -183,7 +113,7 @@ fun Receipt(
                 bottomCornerRadius = roundedCornerRadius,
                 scalpGap = scallopGap
             ),
-            color = ticketBackgroundColor
+            color = backgroundColor
         ) {
             if (receiptData.descriptionSectionData != null) {
                 footerSectionContent(receiptData.descriptionSectionData)
@@ -197,15 +127,22 @@ fun Receipt(
  * Renders a single receipt section with title and label-value rows.
  */
 @Composable
-fun TicketSectionItem(modifier: Modifier = Modifier, sectionData: ZapSectionData<ReceiptSectionData>) {
+fun TicketSectionItem(
+    modifier: Modifier = Modifier,
+    contentColor: Color,
+    titleStyle: TextStyle = MaterialTheme.typography.titleLarge,
+    labelStyle: TextStyle = MaterialTheme.typography.bodyLarge,
+    valueStyle: TextStyle = MaterialTheme.typography.bodyLarge,
+    sectionData: ZapSectionData<ReceiptSectionData>
+) {
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(17.dp)
     ) {
        Text(
             text = sectionData.title,
-            style = MaterialTheme.typography.titleLarge,
-            color = MaterialTheme.colorScheme.onBackground
+            style = titleStyle,
+            color = contentColor
         )
         repeat(sectionData.items.size) { index ->
             Row(
@@ -215,11 +152,13 @@ fun TicketSectionItem(modifier: Modifier = Modifier, sectionData: ZapSectionData
             ) {
                 Text(
                     text = sectionData.items[index].label ?: "",
-                    color = MaterialTheme.colorScheme.onBackground
+                    color = contentColor,
+                    style = labelStyle
                 )
                 Text(
                     text = sectionData.items[index].value ?: "",
-                    color = MaterialTheme.colorScheme.onBackground
+                    color = contentColor,
+                    style = valueStyle
                 )
             }
         }

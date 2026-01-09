@@ -13,8 +13,6 @@ class TicketShape(
     private val topEdgeStyle: TopEdgeStyle = TopEdgeStyle.Inward,
     private val roundedCornerRadius: Dp = 25.dp,
     private val inwardCornerRadius: Dp = 8.dp,
-    private val scallopDepth: Dp = 19.dp,
-    private val scallopWidth: Dp = 27.dp,
 ) : Shape {
 
     override fun createOutline(
@@ -27,12 +25,8 @@ class TicketShape(
             val height = size.height
             val roundedRadiusPx = with(density) { roundedCornerRadius.toPx() }
             val inwardRadiusPx = with(density) { inwardCornerRadius.toPx() }
-            val scalpDepthPx = with(density) { scallopDepth.toPx() }
-            val scalpWidthPx = with(density) { scallopWidth.toPx() }
 
             // Calculate number of scallops
-            val scalpCount = maxOf(1, (width / scalpWidthPx).toInt())
-            val actualScalpWidth = width / scalpCount
 
             // Start drawing based on top edge style
             when (topEdgeStyle) {

@@ -1,6 +1,7 @@
 package com.example.workshop
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,26 +16,38 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.receiptui.components.Receipt
+import com.receiptui.components.ReceiptTicketComponent
+import com.receiptui.components.ReceiptTicketCustomComponent
 import com.receiptui.components.TicketSectionItem
 import com.receiptui.modals.ReceiptData
 import com.receiptui.modals.ReceiptSectionData
 import com.receiptui.modals.ZapSectionData
+import com.receiptui.shapes.TopEdgeStyle
 
 @Composable
-fun ReceiptComponentScreen(modifier: Modifier = Modifier) {
+fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
 
     Column(
         modifier = modifier
             .fillMaxSize()
-            .verticalScroll(rememberScrollState())
+            .padding(horizontal = 24.dp)
+            .verticalScroll(rememberScrollState()),
+        verticalArrangement = Arrangement.spacedBy(24.dp)
     ) {
 
 
+        Text( modifier = Modifier.padding(top = 50.dp),
+            text = "Receipt Component", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
+
         Receipt(
-            modifier = Modifier
-                .padding(horizontal = 16.dp),
+            backgroundColor = Color(0xFFC4C4C4),
+            dashesColor = Color(0xFF232323),
+            contentColor = Color(0xFF131313),
             receiptData = ReceiptData(
                 sectionsData = listOf(
                     ZapSectionData(
@@ -49,7 +62,6 @@ fun ReceiptComponentScreen(modifier: Modifier = Modifier) {
                             ReceiptSectionData(label = "ID", value = "#120304050-1"),
                             ReceiptSectionData(label = "Date", value = "12-Dec-2024"),
                             ReceiptSectionData(label = "Time", value = "12:30 PM"),
-                            ReceiptSectionData(label = "Status", value = "Pending")
                         )
                     )
                 ),
@@ -61,6 +73,7 @@ fun ReceiptComponentScreen(modifier: Modifier = Modifier) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(24.dp),
+                    contentColor = MaterialTheme.colorScheme.onBackground,
                     sectionData = sectionData
                 )
             },
@@ -86,6 +99,63 @@ fun ReceiptComponentScreen(modifier: Modifier = Modifier) {
                 }
             }
         )
+
+        Text(text = "Receipt 1", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
+
+        ReceiptTicketComponent(
+            topEdgeStyle = TopEdgeStyle.Inward,
+            sectionData =  ZapSectionData(
+                title = "Contact Details", items = listOf(
+                    ReceiptSectionData(label = "Name", value = "Tim"),
+                    ReceiptSectionData(label = "Bank Name", value = "Some Bank"),
+                    ReceiptSectionData(label = "IBAN", value = "PK36SCBL0000001123456702")
+                )
+            ),
+            backgroundColor = Color(0xFFC4C4C4),
+            contentColor = Color(0xFF131313),
+        )
+
+        Text(text = "Receipt 2", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
+
+        ReceiptTicketComponent(
+            topEdgeStyle = TopEdgeStyle.Rounded,
+            sectionData =  ZapSectionData(
+                title = "Contact Details", items = listOf(
+                    ReceiptSectionData(label = "Name", value = "Tim"),
+                    ReceiptSectionData(label = "Bank Name", value = "Some Bank"),
+                    ReceiptSectionData(label = "IBAN", value = "PK36SCBL0000001123456702")
+                )
+            ),
+            backgroundColor = Color(0xFFC4C4C4),
+            contentColor = Color(0xFF131313),
+        )
+
+
+        Text(text = "Receipt 3", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
+
+        ReceiptTicketComponent(
+            topEdgeStyle = TopEdgeStyle.Flat,
+            sectionData =  ZapSectionData(
+                title = "Contact Details", items = listOf(
+                    ReceiptSectionData(label = "Name", value = "Tim"),
+                    ReceiptSectionData(label = "Bank Name", value = "Some Bank"),
+                    ReceiptSectionData(label = "IBAN", value = "PK36SCBL0000001123456702")
+                )
+            ),
+            backgroundColor = Color(0xFFC4C4C4),
+            contentColor = Color(0xFF131313),
+        )
+
+        Text(text = "Receipt with Custom content style", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
+
+        ReceiptTicketCustomComponent(
+            backgroundColor = Color(0xFFC4C4C4),
+            content = {
+                Box(modifier = Modifier.fillMaxWidth().height(150.dp))
+            }
+        )
+
+
     }
 
 }
