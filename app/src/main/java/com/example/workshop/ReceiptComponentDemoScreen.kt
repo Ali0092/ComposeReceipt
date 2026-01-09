@@ -21,6 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.receiptui.components.Receipt
+import com.receiptui.components.ReceiptFooterComponent
 import com.receiptui.components.ReceiptTicketComponent
 import com.receiptui.components.ReceiptTicketCustomComponent
 import com.receiptui.components.TicketSectionItem
@@ -150,11 +151,41 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
 
         ReceiptTicketCustomComponent(
             backgroundColor = Color(0xFFC4C4C4),
+            inwardCornerRadius = 20.dp,
             content = {
-                Box(modifier = Modifier.fillMaxWidth().height(150.dp))
+                Box(modifier = Modifier.fillMaxWidth().height(150.dp), contentAlignment = Alignment.Center) {
+                    Text(text = "Custom Receipt\nComponent", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
+
+                }
             }
         )
 
+        Text(text = "Receipt Footer", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
+
+        ReceiptFooterComponent(
+            backgroundColor = Color(0xFFC4C4C4),
+            inwardCornerRadius = 20.dp,
+            content = {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(24.dp), verticalArrangement = Arrangement.Center
+                ) {
+                    Text(text = "Description", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onBackground)
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text(text = "Wholesale product payment ", color = MaterialTheme.colorScheme.onBackground)
+                }
+            }
+        )
+
+        Text(text = "Receipt Footer (without content)", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
+
+        ReceiptFooterComponent(
+            backgroundColor = Color(0xFFC4C4C4),
+            inwardCornerRadius = 20.dp,
+            content = {
+            }
+        )
 
     }
 
