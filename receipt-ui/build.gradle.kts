@@ -59,7 +59,7 @@ afterEvaluate {
                 from(components["release"])
                 groupId = "com.github.ali0092"
                 artifactId = "receipt-ui"
-                version = "1.0.0"
+                version = "1.0.1"
             }
         }
     }

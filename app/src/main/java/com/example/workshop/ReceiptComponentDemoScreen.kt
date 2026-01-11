@@ -101,7 +101,7 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
             }
         )
 
-        Text(text = "Receipt 1", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
+        Text(text = "Ticket Receipt", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
 
         ReceiptTicketComponent(
             topEdgeStyle = TopEdgeStyle.Inward,
@@ -116,7 +116,7 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
             contentColor = Color(0xFF131313),
         )
 
-        Text(text = "Receipt 2", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
+        Text(text = "Ticket with rounded top", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
 
         ReceiptTicketComponent(
             topEdgeStyle = TopEdgeStyle.Rounded,
@@ -132,7 +132,7 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
         )
 
 
-        Text(text = "Receipt 3", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
+        Text(text = "Ticket with flat top", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
 
         ReceiptTicketComponent(
             topEdgeStyle = TopEdgeStyle.Flat,
