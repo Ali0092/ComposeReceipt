@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.example.workshop.ui.theme.backgroundColor
 import com.receiptui.components.Receipt
 import com.receiptui.components.ReceiptFooterComponent
 import com.receiptui.components.ReceiptTicketComponent
@@ -45,7 +46,7 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
             text = "Receipt Component", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
 
         Receipt(
-            backgroundColor = Color(0xFFC4C4C4),
+            backgroundColor = backgroundColor,
             dashesColor = Color(0xFF232323),
             contentColor = Color(0xFF131313),
             receiptData = ReceiptData(
@@ -111,7 +112,7 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
                     ReceiptSectionData(label = "IBAN", value = "PK36SCBL0000001123456702")
                 )
             ),
-            backgroundColor = Color(0xFFC4C4C4),
+            backgroundColor = backgroundColor,
             contentColor = Color(0xFF131313),
         )
 
@@ -126,7 +127,7 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
                     ReceiptSectionData(label = "IBAN", value = "PK36SCBL0000001123456702")
                 )
             ),
-            backgroundColor = Color(0xFFC4C4C4),
+            backgroundColor = backgroundColor,
             contentColor = Color(0xFF131313),
         )
 
@@ -142,14 +143,14 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
                     ReceiptSectionData(label = "IBAN", value = "PK36SCBL0000001123456702")
                 )
             ),
-            backgroundColor = Color(0xFFC4C4C4),
+            backgroundColor = backgroundColor,
             contentColor = Color(0xFF131313),
         )
 
         Text(text = "Receipt with Custom content style", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
 
         ReceiptTicketCustomComponent(
-            backgroundColor = Color(0xFFC4C4C4),
+            backgroundColor = backgroundColor,
             inwardCornerRadius = 20.dp,
             content = {
                 Box(modifier = Modifier.fillMaxWidth().height(150.dp), contentAlignment = Alignment.Center) {
@@ -162,7 +163,7 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
         Text(text = "Receipt Footer", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
 
         ReceiptFooterComponent(
-            backgroundColor = Color(0xFFC4C4C4),
+            backgroundColor = backgroundColor,
             inwardCornerRadius = 20.dp,
             content = {
                 Column(
@@ -180,7 +181,7 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
         Text(text = "Receipt Footer (without content)", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
 
         ReceiptFooterComponent(
-            backgroundColor = Color(0xFFC4C4C4),
+            backgroundColor = backgroundColor,
             inwardCornerRadius = 20.dp,
             content = {
             }
