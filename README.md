@@ -27,7 +27,7 @@ Add the dependency to your app's `build.gradle.kts`:
 
 ```kotlin
 dependencies {
-    implementation("com.github.ali0092:Workshop:1.0.1")
+    implementation("com.github.Ali0092:ComposeReceipt:v1.0.1")
 }
 ```
 
