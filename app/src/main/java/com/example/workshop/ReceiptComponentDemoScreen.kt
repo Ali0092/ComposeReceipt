@@ -24,6 +24,8 @@ import com.receiptui.components.Receipt
 import com.receiptui.components.ReceiptFooterComponent
 import com.receiptui.components.ReceiptTicketComponent
 import com.receiptui.components.ReceiptTicketCustomComponent
+import com.receiptui.components.SharpCorneredTicket
+import com.receiptui.components.SharpCorneredTicketCustom
 import com.receiptui.components.TicketSectionItem
 import com.receiptui.modals.ReceiptData
 import com.receiptui.modals.ReceiptSectionData
@@ -184,6 +186,107 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
             backgroundColor = backgroundColor,
             inwardCornerRadius = 20.dp,
             content = {
+            }
+        )
+
+        Text(
+            text = "Sharp Cornered Ticket (Default)",
+            color = MaterialTheme.colorScheme.onBackground,
+            style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center)
+        )
+
+        SharpCorneredTicket(
+            sectionData = ZapSectionData(
+                title = "Ticket Info",
+                items = listOf(
+                    ReceiptSectionData(label = "Style", value = "Default"),
+                    ReceiptSectionData(label = "Depth", value = "8dp"),
+                    ReceiptSectionData(label = "Width", value = "16dp")
+                )
+            ),
+            backgroundColor = backgroundColor,
+            contentColor = Color(0xFF131313)
+        )
+
+        Text(
+            text = "Sharp Cornered Ticket (Large Teeth)",
+            color = MaterialTheme.colorScheme.onBackground,
+            style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center)
+        )
+
+        SharpCorneredTicket(
+            sectionData = ZapSectionData(
+                title = "Large Variant",
+                items = listOf(
+                    ReceiptSectionData(label = "Style", value = "Large"),
+                    ReceiptSectionData(label = "Depth", value = "12dp"),
+                    ReceiptSectionData(label = "Width", value = "24dp")
+                )
+            ),
+            topZigzagDepth = 12.dp,
+            topZigzagWidth = 24.dp,
+            bottomZigzagDepth = 12.dp,
+            bottomZigzagWidth = 24.dp,
+            backgroundColor = backgroundColor,
+            contentColor = Color(0xFF131313)
+        )
+
+        Text(
+            text = "Sharp Cornered Ticket (Asymmetric)",
+            color = MaterialTheme.colorScheme.onBackground,
+            style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center)
+        )
+
+        SharpCorneredTicket(
+            sectionData = ZapSectionData(
+                title = "Asymmetric Design",
+                items = listOf(
+                    ReceiptSectionData(label = "Top", value = "Small (6dp)"),
+                    ReceiptSectionData(label = "Bottom", value = "Large (14dp)"),
+                    ReceiptSectionData(label = "Status", value = "Active")
+                )
+            ),
+            topZigzagDepth = 6.dp,
+            topZigzagWidth = 12.dp,
+            bottomZigzagDepth = 14.dp,
+            bottomZigzagWidth = 28.dp,
+            backgroundColor = backgroundColor,
+            contentColor = Color(0xFF131313)
+        )
+
+        Text(
+            text = "Sharp Cornered Ticket (Custom Content)",
+            color = MaterialTheme.colorScheme.onBackground,
+            style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center)
+        )
+
+        SharpCorneredTicketCustom(
+            backgroundColor = backgroundColor,
+            topZigzagDepth = 10.dp,
+            topZigzagWidth = 20.dp,
+            bottomZigzagDepth = 10.dp,
+            bottomZigzagWidth = 20.dp,
+            content = {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(24.dp),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "Custom Layout",
+                        style = MaterialTheme.typography.titleLarge,
+                        color = MaterialTheme.colorScheme.onBackground
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = "This demonstrates the custom content variant with full control over the internal layout.",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onBackground,
+                        textAlign = TextAlign.Center
+                    )
+                }
             }
         )
 
