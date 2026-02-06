@@ -3,10 +3,9 @@
 A beautiful and flexible Jetpack Compose library for creating receipt-style UI components with multiple shape variations, customizable styling, and shadow effects.
 
 ## Screenshots
-
-<img width="321" height="536" alt="Screenshot 2026-01-11 at 1 53 49 PM" src="https://github.com/user-attachments/assets/1e4927bc-fbba-499a-bd4b-eb9ef70a65e8" />
-<img width="304" height="627" alt="Screenshot 2026-01-11 at 1 54 30 PM" src="https://github.com/user-attachments/assets/88c6a6b2-5313-41ab-8b4d-ac483d62f3df" />
-<img width="306" height="440" alt="Screenshot 2026-01-11 at 1 55 53 PM" src="https://github.com/user-attachments/assets/a25fdd47-7061-4ff1-9e8e-fafc3e7677b5" />
+<img width="328" height="517" alt="Screenshot 2026-02-06 at 4 57 08 PM" src="https://github.com/user-attachments/assets/3cca42f7-2c0d-4166-8605-181b9236433a" />
+<img width="329" height="624" alt="Screenshot 2026-02-06 at 4 57 22 PM" src="https://github.com/user-attachments/assets/53a42528-a32f-4545-8c5e-4fcf49cd5b74" />
+<img width="302" height="529" alt="Screenshot 2026-02-06 at 5 00 15 PM" src="https://github.com/user-attachments/assets/27f5ac23-8990-495a-ac40-6747edc77b38" />
 
 ## Features
 
