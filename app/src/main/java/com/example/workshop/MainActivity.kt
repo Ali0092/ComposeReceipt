@@ -17,7 +17,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             WorkshopTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    ReceiptComponentDemoScreen(modifier = Modifier.padding(innerPadding))
+                    DemoNavigationScreen(modifier = Modifier.padding(innerPadding))
                 }
             }
         }
