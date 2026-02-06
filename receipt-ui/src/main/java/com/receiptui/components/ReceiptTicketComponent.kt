@@ -17,6 +17,16 @@ import com.receiptui.shapes.TopEdgeStyle
 
 /**
  * A composable component that displays receipt section data in a ticket shape.
+ *
+ * @param modifier Modifier to be applied to the component
+ * @param padding Inner padding for the content
+ * @param sectionData Receipt section data to display
+ * @param topEdgeStyle Style of the top edge (Inward, Rounded, or Flat)
+ * @param roundedCornerRadius Radius for rounded corners when using Rounded style
+ * @param inwardCornerRadius Radius for inward curves when using Inward style
+ * @param backgroundColor Background color of the ticket
+ * @param contentColor Color for the text content
+ * @param shadowElevation Elevation for the shadow effect (0.dp for no shadow)
  */
 @Composable
 fun ReceiptTicketComponent(
@@ -27,7 +37,8 @@ fun ReceiptTicketComponent(
     roundedCornerRadius: Dp = 25.dp,
     inwardCornerRadius: Dp = 16.dp,
     backgroundColor: Color,
-    contentColor: Color
+    contentColor: Color,
+    shadowElevation: Dp = 0.dp
 ) {
     Surface(
         modifier = modifier
@@ -38,7 +49,8 @@ fun ReceiptTicketComponent(
             roundedCornerRadius = roundedCornerRadius,
             inwardCornerRadius = inwardCornerRadius
         ),
-        color = backgroundColor
+        color = backgroundColor,
+        shadowElevation = shadowElevation
     ) {
         TicketSectionItem(
             modifier = Modifier
@@ -60,6 +72,7 @@ fun ReceiptTicketCustomComponent(
     roundedCornerRadius: Dp = 25.dp,
     inwardCornerRadius: Dp = 8.dp,
     backgroundColor: Color,
+    shadowElevation: Dp = 0.dp,
     content: @Composable () -> Unit
 ) {
     Surface(
@@ -71,7 +84,8 @@ fun ReceiptTicketCustomComponent(
             roundedCornerRadius = roundedCornerRadius,
             inwardCornerRadius = inwardCornerRadius
         ),
-        color = backgroundColor
+        color = backgroundColor,
+        shadowElevation = shadowElevation
     ) {
         content()
     }

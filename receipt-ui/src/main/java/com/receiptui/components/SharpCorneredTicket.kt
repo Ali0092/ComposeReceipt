@@ -27,6 +27,7 @@ import com.receiptui.shapes.SharpCorneredTicketShape
  * @param bottomZigzagWidth Target width per tooth on the bottom edge
  * @param backgroundColor Background color of the ticket
  * @param contentColor Color for the text content
+ * @param shadowElevation Elevation for the shadow effect (0.dp for no shadow)
  */
 @Composable
 fun SharpCorneredTicket(
@@ -38,7 +39,9 @@ fun SharpCorneredTicket(
     bottomZigzagDepth: Dp = 8.dp,
     bottomZigzagWidth: Dp = 16.dp,
     backgroundColor: Color,
-    contentColor: Color
+    contentColor: Color,
+    shadowElevation: Dp = 0.dp,
+    tonalElevation: Dp = 0.dp
 ) {
     Surface(
         modifier = modifier
@@ -50,7 +53,9 @@ fun SharpCorneredTicket(
             bottomZigzagDepth = bottomZigzagDepth,
             bottomZigzagWidth = bottomZigzagWidth
         ),
-        color = backgroundColor
+        color = backgroundColor,
+        shadowElevation = shadowElevation,
+        tonalElevation = tonalElevation
     ) {
         TicketSectionItem(
             modifier = Modifier
@@ -72,6 +77,7 @@ fun SharpCorneredTicket(
  * @param bottomZigzagDepth Height of the triangular teeth on the bottom edge
  * @param bottomZigzagWidth Target width per tooth on the bottom edge
  * @param backgroundColor Background color of the ticket
+ * @param shadowElevation Elevation for the shadow effect (0.dp for no shadow)
  * @param content Custom composable content to display inside the ticket
  */
 @Composable
@@ -82,6 +88,7 @@ fun SharpCorneredTicketCustom(
     bottomZigzagDepth: Dp = 8.dp,
     bottomZigzagWidth: Dp = 16.dp,
     backgroundColor: Color,
+    shadowElevation: Dp = 0.dp,
     content: @Composable () -> Unit
 ) {
     Surface(
@@ -94,7 +101,8 @@ fun SharpCorneredTicketCustom(
             bottomZigzagDepth = bottomZigzagDepth,
             bottomZigzagWidth = bottomZigzagWidth
         ),
-        color = backgroundColor
+        color = backgroundColor,
+        shadowElevation = shadowElevation
     ) {
         content()
     }

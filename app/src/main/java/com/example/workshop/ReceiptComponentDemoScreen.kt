@@ -3,6 +3,7 @@ package com.example.workshop
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -38,19 +39,20 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(horizontal = 24.dp)
+            .padding(horizontal = 24.dp, vertical = 16.dp)
             .verticalScroll(rememberScrollState()),
-        verticalArrangement = Arrangement.spacedBy(24.dp)
+        verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
 
 
-        Text( modifier = Modifier.padding(top = 50.dp),
+        Text( modifier = Modifier.padding(top = 30.dp),
             text = "Receipt Component", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
 
         Receipt(
-            backgroundColor = backgroundColor,
-            dashesColor = Color(0xFF232323),
-            contentColor = Color(0xFF131313),
+            dashesColor = Color(0xFFF5F4F4),
+            backgroundColor = Color(0xFF2F2F2F),
+            contentColor = Color(0xFFF5F4F4),
+            shadowElevation = 10.dp,
             receiptData = ReceiptData(
                 sectionsData = listOf(
                     ZapSectionData(
@@ -76,7 +78,7 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(24.dp),
-                    contentColor = MaterialTheme.colorScheme.onBackground,
+                    contentColor = Color(0xFFF5F4F4),
                     sectionData = sectionData
                 )
             },
@@ -86,8 +88,8 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
                         .fillMaxWidth()
                         .padding(24.dp), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween
                 ) {
-                    Text(text = receiptSectionData.label.toString(), style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onBackground)
-                    Text(text = receiptSectionData.value.toString(), color = MaterialTheme.colorScheme.onBackground)
+                    Text(text = receiptSectionData.label.toString(), style = MaterialTheme.typography.titleLarge, color = Color(0xFFF5F4F4))
+                    Text(text = receiptSectionData.value.toString(), color = Color(0xFFF5F4F4))
                 }
             },
             footerSectionContent = { receiptSectionData ->
@@ -96,14 +98,15 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
                         .fillMaxWidth()
                         .padding(24.dp), verticalArrangement = Arrangement.Center
                 ) {
-                    Text(text = receiptSectionData.label.toString(), style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.onBackground)
+                    Text(text = receiptSectionData.label.toString(), style = MaterialTheme.typography.titleLarge, color = Color(0xFFF5F4F4))
                     Spacer(modifier = Modifier.height(16.dp))
-                    Text(text = receiptSectionData.value.toString(), color = MaterialTheme.colorScheme.onBackground)
+                    Text(text = receiptSectionData.value.toString(), color = Color(0xFFF5F4F4))
                 }
-            }
+            },
+
         )
 
-        Text(text = "Ticket Receipt", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
+        Text(text = "Ticket Receipt (with shadow)", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
 
         ReceiptTicketComponent(
             topEdgeStyle = TopEdgeStyle.Inward,
@@ -114,11 +117,14 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
                     ReceiptSectionData(label = "IBAN", value = "PK36SCBL0000001123456702")
                 )
             ),
-            backgroundColor = backgroundColor,
-            contentColor = Color(0xFF131313),
+            padding = PaddingValues(32.dp),
+            inwardCornerRadius = 24.dp,
+            backgroundColor = Color(0xff123123),
+            contentColor = Color(0xFFF3F3F3),
+            shadowElevation = 8.dp
         )
 
-        Text(text = "Ticket with rounded top", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
+        Text(text = "Ticket with rounded top (elevated shadow)", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
 
         ReceiptTicketComponent(
             topEdgeStyle = TopEdgeStyle.Rounded,
@@ -129,8 +135,9 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
                     ReceiptSectionData(label = "IBAN", value = "PK36SCBL0000001123456702")
                 )
             ),
-            backgroundColor = backgroundColor,
-            contentColor = Color(0xFF131313),
+            backgroundColor = Color(0xFF2F2F2F),
+            contentColor = Color(0xFFF5F4F4),
+            shadowElevation = 12.dp
         )
 
 
@@ -145,8 +152,9 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
                     ReceiptSectionData(label = "IBAN", value = "PK36SCBL0000001123456702")
                 )
             ),
-            backgroundColor = backgroundColor,
-            contentColor = Color(0xFF131313),
+            backgroundColor = Color(0xFF091F65),
+            contentColor = Color(0xFFEAEAEA),
+            shadowElevation = 8.dp
         )
 
         Text(text = "Receipt with Custom content style", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
@@ -159,7 +167,8 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
                     Text(text = "Custom Receipt\nComponent", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
 
                 }
-            }
+            },
+            shadowElevation = 8.dp
         )
 
         Text(text = "Receipt Footer", color = MaterialTheme.colorScheme.onBackground, style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center))
@@ -190,7 +199,7 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
         )
 
         Text(
-            text = "Sharp Cornered Ticket (Default)",
+            text = "Sharp Cornered Ticket (Default with shadow)",
             color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center)
         )
@@ -205,30 +214,9 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
                 )
             ),
             backgroundColor = backgroundColor,
-            contentColor = Color(0xFF131313)
-        )
-
-        Text(
-            text = "Sharp Cornered Ticket (Large Teeth)",
-            color = MaterialTheme.colorScheme.onBackground,
-            style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center)
-        )
-
-        SharpCorneredTicket(
-            sectionData = ZapSectionData(
-                title = "Large Variant",
-                items = listOf(
-                    ReceiptSectionData(label = "Style", value = "Large"),
-                    ReceiptSectionData(label = "Depth", value = "12dp"),
-                    ReceiptSectionData(label = "Width", value = "24dp")
-                )
-            ),
-            topZigzagDepth = 12.dp,
-            topZigzagWidth = 24.dp,
-            bottomZigzagDepth = 12.dp,
-            bottomZigzagWidth = 24.dp,
-            backgroundColor = backgroundColor,
-            contentColor = Color(0xFF131313)
+            contentColor = Color(0xFF131313),
+            shadowElevation = 10.dp,
+            tonalElevation = 5.dp
         )
 
         Text(
@@ -250,22 +238,25 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
             topZigzagWidth = 12.dp,
             bottomZigzagDepth = 14.dp,
             bottomZigzagWidth = 28.dp,
-            backgroundColor = backgroundColor,
+            shadowElevation = 5.dp,
+            tonalElevation = 5.dp,
+            backgroundColor = Color(0xFF00BCD4),
             contentColor = Color(0xFF131313)
         )
 
         Text(
-            text = "Sharp Cornered Ticket (Custom Content)",
+            text = "Sharp Cornered Ticket (Custom Content with shadow)",
             color = MaterialTheme.colorScheme.onBackground,
             style = MaterialTheme.typography.titleLarge.copy(textAlign = TextAlign.Center)
         )
 
         SharpCorneredTicketCustom(
-            backgroundColor = backgroundColor,
+            backgroundColor = Color(0xFFC97907),
             topZigzagDepth = 10.dp,
             topZigzagWidth = 20.dp,
             bottomZigzagDepth = 10.dp,
             bottomZigzagWidth = 20.dp,
+            shadowElevation = 10.dp,
             content = {
                 Column(
                     modifier = Modifier
@@ -289,6 +280,8 @@ fun ReceiptComponentDemoScreen(modifier: Modifier = Modifier) {
                 }
             }
         )
+
+        Spacer(modifier = Modifier.height(24.dp))
 
     }
 

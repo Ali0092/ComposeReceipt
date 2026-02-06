@@ -20,6 +20,7 @@ fun ReceiptFooterComponent(
     inwardCornerRadius: Dp = 8.dp,
     scallopGap: Dp = 2.dp,
     backgroundColor: Color,
+    shadowElevation: Dp = 3.dp,
     content: @Composable () -> Unit
 ) {
     Surface(
@@ -31,7 +32,8 @@ fun ReceiptFooterComponent(
             bottomCornerRadius = roundedCornerRadius,
             scalpGap = scallopGap
         ),
-        color = backgroundColor
+        color = backgroundColor,
+        shadowElevation = shadowElevation
     ) {
         content()
     }

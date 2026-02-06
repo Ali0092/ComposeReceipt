@@ -47,6 +47,8 @@ fun Receipt(
     roundedCornerRadius: Dp = 25.dp,
     inwardCornerRadius: Dp = 8.dp,
     scallopGap: Dp = 2.dp,
+    shadowElevation: Dp = 3.dp,
+    tonalElevation: Dp = 3.dp,
     ticketSectionContent: @Composable (ZapSectionData<ReceiptSectionData>) -> Unit,
     totalSectionContent: @Composable (ReceiptSectionData) -> Unit,
     footerSectionContent: @Composable (ReceiptSectionData) -> Unit
@@ -65,7 +67,9 @@ fun Receipt(
                         roundedCornerRadius = roundedCornerRadius,
                         inwardCornerRadius = inwardCornerRadius
                     ),
-                    color = backgroundColor
+                    color = backgroundColor,
+                    shadowElevation = shadowElevation,
+                    tonalElevation = tonalElevation
                 ) {
                     ticketSectionContent(receiptData.sectionsData[index])
                 }
@@ -89,7 +93,9 @@ fun Receipt(
                     roundedCornerRadius = roundedCornerRadius,
                     inwardCornerRadius = inwardCornerRadius
                 ),
-                color = backgroundColor
+                color = backgroundColor,
+                shadowElevation = shadowElevation,
+                tonalElevation = tonalElevation
             ) {
                 totalSectionContent(receiptData.totalSectionData)
             }
@@ -113,7 +119,9 @@ fun Receipt(
                 bottomCornerRadius = roundedCornerRadius,
                 scalpGap = scallopGap
             ),
-            color = backgroundColor
+            color = backgroundColor,
+            shadowElevation = shadowElevation,
+            tonalElevation = tonalElevation
         ) {
             if (receiptData.descriptionSectionData != null) {
                 footerSectionContent(receiptData.descriptionSectionData)
